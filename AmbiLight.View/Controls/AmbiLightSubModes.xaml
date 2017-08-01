@@ -1,0 +1,119 @@
+﻿<windows:BlurryWindow x:Class="AmbiLight.View.Controls.AmbiLightSubModes"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:local="clr-namespace:AmbiLight.View.Controls"
+                      xmlns:windows="clr-namespace:BlurryControls.Windows;assembly=BlurryControls"
+                      xmlns:module="clr-namespace:AmbiLight.View.Module"
+                      xmlns:modes="clr-namespace:AmbiLight.ViewModel.Models.Modes;assembly=AmbiLight.ViewModel"
+                      mc:Ignorable="d"
+                      d:DesignHeight="68" d:DesignWidth="528"
+                      Width="0" Height="100"
+                      Background="Gray"
+
+                      SizeToContent="WidthAndHeight"
+                      IsMenuBarVisible="False"
+                      IsResizable="False"
+                      ShowInTaskbar="False"
+                      ResizeMode="NoResize"
+
+                      Loaded="AmbiLightSubModes_OnLoaded"
+                      Deactivated="AmbiLightSubModes_OnDeactivated"
+                      MouseEnter="AmbiLightSubModes_OnMouseEnter"
+                      MouseLeave="AmbiLightSubModes_OnMouseLeave">
+    <windows:BlurryWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/Converter/Converters.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="WhiteShaderButtonStyle"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="Background" Value="#00000000" />
+                <!--<Setter Property="Foreground" Value="#FFFFFFFF" />-->
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Height" Value="100" />
+                <Setter Property="Width" Value="100" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <EventTrigger RoutedEvent="Button.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation To="#66FFFFFF"
+                                                Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                                FillBehavior="HoldEnd"
+                                                Duration="0:0:0.5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Button.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation To="#00000000"
+                                                Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                                FillBehavior="HoldEnd"
+                                                Duration="0:0:0.5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </windows:BlurryWindow.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <!--<ColumnDefinition Width="Auto"/>-->
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="SubModes">
+            <ItemsControl x:Name="Modes"
+                          ItemsSource="{Binding SubModes}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <!-- ToolTip="{Binding ToolTip}" on Grid -->
+                    <DataTemplate DataType="modes:IAmbiLightMode">
+                        <Grid x:Name="ModeGrid"
+                              Width="100"
+                              Height="100"
+                              MouseEnter="ModeGrid_OnMouseEnter"
+                              MouseLeave="ModeGrid_OnMouseLeave">
+                            <Button Click="ModeTemplate_OnClick"
+                                    Style="{StaticResource WhiteShaderButtonStyle}">
+                                <Image Source="{Binding ImageSource}"
+                                       Height="69"
+                                       Width="69" />
+                            </Button>
+
+                            <local:AnimatedBorder Height="94"
+                                                  Width="94"
+                                                  IsActive="{Binding IsActive,
+                                                                     Mode=TwoWay,
+                                                                     UpdateSourceTrigger=PropertyChanged}" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </Grid>
+</windows:BlurryWindow>

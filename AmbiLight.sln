@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 Application", "0 Application", "{6F494C16-FAA3-454B-AEEF-394A1BADF3BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmbiLight.View", "AmbiLight.View\AmbiLight.View.csproj", "{04FE8738-BA12-4676-BB5B-F8C924A5D38A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmbiLight.Launcher", "AmbiLight.Launcher\AmbiLight.Launcher.csproj", "{F4810A80-D0A5-4AAD-9C25-4C0E7119C12C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmbiLight.ViewModel", "AmbiLight.ViewModel\AmbiLight.ViewModel.csproj", "{B6D45B09-40ED-4578-AF43-0BCF442C2172}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 View", "1 View", "{A2BA9BEE-C171-49C2-B12B-C47C639D5CAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 CrossCutting", "2 CrossCutting", "{EE7DBCE6-AE4D-4C2A-887D-7D5637E86205}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmbiLight.CrossCutting", "AmbiLight.CrossCutting\AmbiLight.CrossCutting.csproj", "{56A06F9E-2860-427C-B3F5-0A182799521D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04FE8738-BA12-4676-BB5B-F8C924A5D38A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04FE8738-BA12-4676-BB5B-F8C924A5D38A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04FE8738-BA12-4676-BB5B-F8C924A5D38A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04FE8738-BA12-4676-BB5B-F8C924A5D38A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4810A80-D0A5-4AAD-9C25-4C0E7119C12C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4810A80-D0A5-4AAD-9C25-4C0E7119C12C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4810A80-D0A5-4AAD-9C25-4C0E7119C12C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4810A80-D0A5-4AAD-9C25-4C0E7119C12C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6D45B09-40ED-4578-AF43-0BCF442C2172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6D45B09-40ED-4578-AF43-0BCF442C2172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6D45B09-40ED-4578-AF43-0BCF442C2172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6D45B09-40ED-4578-AF43-0BCF442C2172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56A06F9E-2860-427C-B3F5-0A182799521D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56A06F9E-2860-427C-B3F5-0A182799521D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56A06F9E-2860-427C-B3F5-0A182799521D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56A06F9E-2860-427C-B3F5-0A182799521D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{04FE8738-BA12-4676-BB5B-F8C924A5D38A} = {A2BA9BEE-C171-49C2-B12B-C47C639D5CAB}
+		{F4810A80-D0A5-4AAD-9C25-4C0E7119C12C} = {6F494C16-FAA3-454B-AEEF-394A1BADF3BB}
+		{B6D45B09-40ED-4578-AF43-0BCF442C2172} = {A2BA9BEE-C171-49C2-B12B-C47C639D5CAB}
+		{56A06F9E-2860-427C-B3F5-0A182799521D} = {EE7DBCE6-AE4D-4C2A-887D-7D5637E86205}
+	EndGlobalSection
+EndGlobal

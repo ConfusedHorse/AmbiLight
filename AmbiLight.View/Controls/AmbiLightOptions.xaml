@@ -1,0 +1,36 @@
+﻿<windows:BlurryWindow x:Class="AmbiLight.View.Controls.AmbiLightOptions"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                      xmlns:local="clr-namespace:AmbiLight.View.Controls"
+                      xmlns:windows="clr-namespace:BlurryControls.Windows;assembly=BlurryControls"
+                      xmlns:module="clr-namespace:AmbiLight.View.Module"
+                      mc:Ignorable="d" 
+                      d:DesignHeight="156" d:DesignWidth="132"
+                      Background="Gray"
+                      
+                      Height="200"
+                      Width="200"
+                      IsMenuBarVisible="False"
+                      IsResizable="False"
+                      ShowInTaskbar="False"
+                      ResizeMode="NoResize"
+                      
+                      Loaded="AmbiLightOptions_OnLoaded"
+                      MouseEnter="AmbiLightOptions_OnMouseEnter"
+                      MouseLeave="AmbiLightOptions_OnMouseLeave">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <!--<ColumnDefinition Width="Auto"/>-->
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="ColorPicker">
+            <local:ColorPicker SelectionChanged="ColorPicker_OnSelectionChanged"
+                               Height="200"
+                               Width="200"/>
+        </Grid>
+    </Grid>
+</windows:BlurryWindow>
+

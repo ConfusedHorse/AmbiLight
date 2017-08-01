@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="AmbiLight.View.Controls.AnimatedBorder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
+    <Canvas>
+        <Rectangle x:Name="Border4"
+                   SnapsToDevicePixels="True"
+                   StrokeDashArray="4"
+                   StrokeDashCap="Square"
+                   StrokeThickness="2"
+                   Stroke="White"
+                   Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas}}"
+                   Width="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas}}">
+            <Rectangle.Triggers>
+                <EventTrigger RoutedEvent="Rectangle.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation By="1"
+                                             From="0"
+                                             To="256"
+                                             Duration="0:0:7"
+                                             RepeatBehavior="Forever"
+                                             Storyboard.TargetName="Border4"
+                                             Storyboard.TargetProperty="StrokeDashOffset" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Rectangle.Triggers>
+            <Rectangle.Effect>
+                <BlurEffect />
+            </Rectangle.Effect>
+        </Rectangle>
+        <Rectangle x:Name="Border8"
+                   SnapsToDevicePixels="True"
+                   StrokeDashArray="8"
+                   StrokeDashCap="Square"
+                   StrokeThickness="2"
+                   Stroke="White"
+                   Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas}}"
+                   Width="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas}}">
+            <Rectangle.Triggers>
+                <EventTrigger RoutedEvent="Rectangle.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation By="1"
+                                             From="256"
+                                             To="0"
+                                             Duration="0:0:13"
+                                             RepeatBehavior="Forever"
+                                             Storyboard.TargetName="Border8"
+                                             Storyboard.TargetProperty="StrokeDashOffset" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Rectangle.Triggers>
+            <Rectangle.Effect>
+                <BlurEffect />
+            </Rectangle.Effect>
+        </Rectangle>
+        <Rectangle x:Name="Border16"
+                   SnapsToDevicePixels="True"
+                   StrokeDashArray="16"
+                   StrokeDashCap="Square"
+                   StrokeThickness="2"
+                   Stroke="White"
+                   Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas}}"
+                   Width="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas}}">
+            <Rectangle.Triggers>
+                <EventTrigger RoutedEvent="Rectangle.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation By="1"
+                                             From="0"
+                                             To="256"
+                                             Duration="0:0:11"
+                                             RepeatBehavior="Forever"
+                                             Storyboard.TargetName="Border16"
+                                             Storyboard.TargetProperty="StrokeDashOffset" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Rectangle.Triggers>
+            <Rectangle.Effect>
+                <BlurEffect />
+            </Rectangle.Effect>
+        </Rectangle>
+        <Rectangle x:Name="Border32"
+                   SnapsToDevicePixels="True"
+                   StrokeDashArray="32"
+                   StrokeDashCap="Square"
+                   StrokeThickness="2"
+                   Stroke="White"
+                   Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas}}"
+                   Width="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas}}">
+            <Rectangle.Triggers>
+                <EventTrigger RoutedEvent="Rectangle.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation By="1"
+                                             From="256"
+                                             To="0"
+                                             Duration="0:0:17"
+                                             RepeatBehavior="Forever"
+                                             Storyboard.TargetName="Border32"
+                                             Storyboard.TargetProperty="StrokeDashOffset" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Rectangle.Triggers>
+            <Rectangle.Effect>
+                <BlurEffect />
+            </Rectangle.Effect>
+        </Rectangle>
+    </Canvas>
+</UserControl>
