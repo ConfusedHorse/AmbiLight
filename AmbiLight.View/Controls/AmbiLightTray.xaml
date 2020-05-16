@@ -1,10 +1,10 @@
-﻿<windows:BlurryWindow x:Class="AmbiLight.View.Controls.AmbiLightTray"
+﻿<controls:BlurryWindow x:Class="AmbiLight.View.Controls.AmbiLightTray"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:local="clr-namespace:AmbiLight.View.Controls"
-                      xmlns:windows="clr-namespace:BlurryControls.Windows;assembly=BlurryControls"
+                      xmlns:controls="clr-namespace:BlurryControls.Controls;assembly=BlurryControls"
                       xmlns:module="clr-namespace:AmbiLight.View.Module"
                       xmlns:modes="clr-namespace:AmbiLight.ViewModel.Models.Modes;assembly=AmbiLight.ViewModel"
                       mc:Ignorable="d"
@@ -22,7 +22,7 @@
 
                       DataContext="{Binding Path=AmbiLightViewModel,
                                             Source={x:Static module:ViewModelLocator.Instance}}">
-    <windows:BlurryWindow.Resources>
+    <controls:BlurryWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Converter/Converters.xaml" />
@@ -73,7 +73,7 @@
                 </Style.Triggers>
             </Style>
         </ResourceDictionary>
-    </windows:BlurryWindow.Resources>
+    </controls:BlurryWindow.Resources>
 
     <Grid x:Name="Interaction">
         <ItemsControl x:Name="Modes"
@@ -109,4 +109,4 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
     </Grid>
-</windows:BlurryWindow>
+</controls:BlurryWindow>
