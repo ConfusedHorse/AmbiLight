@@ -5,15 +5,6 @@
     <Setting Name="StartOnWindowsStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="Frames" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">60</Value>
-    </Setting>
-    <Setting Name="VerticalLedCount" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">11</Value>
-    </Setting>
-    <Setting Name="HorizontalLedCount" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">19</Value>
-    </Setting>
     <Setting Name="Dim" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">63</Value>
     </Setting>
@@ -25,6 +16,15 @@
     </Setting>
     <Setting Name="Merge" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="Frames" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="VerticalLedCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">19</Value>
+    </Setting>
+    <Setting Name="HorizontalLedCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">33</Value>
     </Setting>
   </Settings>
 </SettingsFile>

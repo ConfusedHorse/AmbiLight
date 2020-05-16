@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO.Ports;
 using System.Linq;
@@ -8,9 +9,8 @@ namespace AmbiLight.CrossCutting.Helpers
 {
     public class CommunicationHelper
     {
-        private SerialPort _port;
+        private readonly List<SerialPort> ports = new List<SerialPort>();
         private readonly DispatcherTimer _arduinoDispatcherTimer = new DispatcherTimer();
-        private string _portName = string.Empty;
         private bool _isFirstConnectionAttempt;
         private const int BaudRate = 115200;
 
@@ -30,7 +30,7 @@ namespace AmbiLight.CrossCutting.Helpers
             if (_isFirstConnectionAttempt)
                 _arduinoDispatcherTimer.Start();
             else
-                ConnectToArduino();
+                ConnectToArduino(abbreviation);
         }
 
         private void ConnectToArduino(string abbreviation = "COM")
@@ -43,40 +43,73 @@ namespace AmbiLight.CrossCutting.Helpers
             var portNames = SerialPort.GetPortNames();
             if (portNames.Length <= 0) return;
 
-            _portName = portNames.First(port => port.Contains(abbreviation));
-            if (_portName == string.Empty) return;
-            Debug.WriteLine($"Arduino found! ({_portName})");
-
-            BeginSerial(BaudRate, _portName);
-            try
+            var possibleLedDrivers = portNames.Where(port => port.StartsWith(abbreviation));
+            foreach (var portName in possibleLedDrivers)
             {
-                _port.Open();
-            }
-            catch (Exception)
-            {
-                _arduinoDispatcherTimer.Start();
-            }
+                var port = new SerialPort(portName, BaudRate);
+                try
+                {
+                    Debug.WriteLine($"Prompting {portName}");
 
-            _arduinoDispatcherTimer.Stop();
-            Connected = true;
-            _isFirstConnectionAttempt = true;
+                    port.ReadTimeout = 20;
+                    port.DataReceived += new SerialDataReceivedEventHandler(port_handleDiscovery);
+                    port.Open();
+                    port.WriteLine("init");
+                    ports.Add(port);
+                }
+                catch (Exception e)
+                {
+                    if (e is TimeoutException)
+                    {
+                        Debug.WriteLine($"Timeout in {portName}");
+                        port.Close();
+                        continue;
+                    }
+                    _arduinoDispatcherTimer.Start();
+                }
+            }
+        }
+
+        private void port_handleDiscovery(object sender, SerialDataReceivedEventArgs e)
+        {
+            foreach (var port in ports.ToList())
+            {
+                var answer = port.ReadExisting();
+                Debug.WriteLine($"Answer {answer}");
+                if (answer == "ambilight")
+                {
+                    Debug.WriteLine($"Arduino found! ({port.PortName})");
+
+                    _arduinoDispatcherTimer.Stop();
+                    Connected = true;
+                    _isFirstConnectionAttempt = true;
+                }
+                else
+                {
+                    port.Close();
+                    ports.Remove(port);
+                    continue;
+                }
+            }
         }
 
         public void SendDataToPort(string message)
         {
-            try
-            {
-                _port.WriteLine(message);
-            }
-            catch (Exception)
+            if (!Connected)
             {
                 _arduinoDispatcherTimer.Start();
+            } 
+            else
+            {
+                try
+                {
+                    ports.First()?.WriteLine(message);
+                }
+                catch (Exception)
+                {
+                    _arduinoDispatcherTimer.Start();
+                }
             }
-        }
-
-        private void BeginSerial(int baud, string name)
-        {
-            _port = new SerialPort(name, baud);
         }
     }
 }
